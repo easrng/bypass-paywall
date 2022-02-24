@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>13ft Ladder</title>
+<script>
+let article;
+let url = location.href.slice(location.origin.length + 1);
+try {
+  article = new URL(url).href
+} catch (e) {}
+if (!article) try {
+  article = new URL("https://" + url).href
+} catch (e) {}
+if (!article) try {
+  url = decodeURIComponent(url)
+  try {
+    article = new URL(url).href
+  } catch (e) {}
+    if (!article) try {
+      article = new URL("https://" + url).href
+    } catch (e) {}
+} catch (e) {}
+if (!article) {
+    alert("You didn't provide a valid URL.")
+    location.replace("/")
+}
+location.replace("/load.html?url=" + encodeURIComponent(article))
+</script>
+<noscript>To use 13ft without Javascript please go to the homepage and enter your article's URL there.</noscript>
+</html>
