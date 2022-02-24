@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>13ft Ladder</title>
 <script>
+(()=>{
 let article;
 let url = location.href.slice(location.origin.length + 1);
 try {
@@ -22,10 +23,12 @@ if (!article) try {
     } catch (e) {}
 } catch (e) {}
 if (!article) {
-    alert("You didn't provide a valid URL.")
-    location.replace("/")
+  alert("You didn't provide a valid URL.")
+  location.replace("/")
+  return
 }
 location.replace("/load.html?url=" + encodeURIComponent(article))
+})()
 </script>
 <noscript>To use 13ft without Javascript please go to the homepage and enter your article's URL there.</noscript>
 </html>
