@@ -7,6 +7,82 @@
 </head>
 <body>
   <noscript>This site will need JS</noscript>
-  <div id="isBroken">Is the paywall gone? <button onclick="isBroken.style.display='none'">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'">No</button></div>
-</body>
+<style>
+* {
+ box-sizing:border-box
+}
+body,
+html {
+ font-family:system-ui,sans-serif;
+ margin:0;
+ padding:0;
+ width:100%
+}
+.button {
+ -webkit-appearance:none;
+ align-items:center;
+ border-radius:4px;
+ box-shadow:none;
+ display:inline-flex;
+ font-size:0.9rem;
+ height:2rem;
+ justify-content:flex-start;
+ line-height:1.5;
+ padding:calc(.5em - 1px) calc(.75em - 1px);
+ position:relative;
+ vertical-align:top;
+ -webkit-touch-callout:none;
+ -webkit-user-select:none;
+ -moz-user-select:none;
+ -ms-user-select:none;
+ user-select:none;
+ background-color:#fef3c7;
+ border:solid 1px #fde68a;
+ color:#363636;
+ cursor:pointer;
+ justify-content:center;
+ padding:calc(.5em - 1px) 0.25;
+ text-align:center;
+ white-space:nowrap;
+ margin-right: 0.35rem;
+}
+[disabled].button {
+ cursor:not-allowed
+}
+.button:hover {
+ background-color:#fde68a;
+ color:#363636
+}
+.button:focus {
+ background-color:#fde68a;
+ color:#363636
+}
+.button:active {
+ box-shadow:0 0 0 .125em #f59e0b40
+}
+.button:active,
+.button:focus {
+ outline:0;
+ border-color:#f59e0b
+}
+.button:focus:not(:active) {
+ box-shadow:0 0 0 .125em #f59e0b40
+}
+
+#isBroken {
+  background: #fff8ea;
+  position: fixed;
+  bottom: 0;
+  left: 1rem;
+  padding: 0.35rem 0 0.35rem 0.35rem;
+  border: 1px solid #fde68a;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+}
+</style>
+<div id="isBroken"><span style="margin-right: 0.5rem;">Is the paywall gone?</span><button onclick="isBroken.style.display='none'" class="button">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'" class="button">No</button></div></body>
 </html>
