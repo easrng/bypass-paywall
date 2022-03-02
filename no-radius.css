@@ -1,0 +1,26 @@
+form {
+  flex-flow: column;
+}
+.button, .input {
+  border: 4px solid transparent;
+  border-radius: 0;
+  background-color: transparent !important;
+  background-repeat: no-repeat;
+  background-size: calc(100% + 2px) calc(100% + 2px);
+  background-position: -1px;
+  box-shadow: none;
+}
+.button {
+  -moz-border-image: url('https://owo.whats-th.is/5BKwxKu.png') 4 4 4 4 repeat repeat;
+  -webkit-border-image: url('https://owo.whats-th.is/5BKwxKu.png') 4 4 4 4 repeat repeat;
+  -o-border-image: url('https://owo.whats-th.is/5BKwxKu.png') 4 4 4 4 repeat repeat;
+  border-image: url('https://owo.whats-th.is/5BKwxKu.png') 4 4 4 4 repeat repeat;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP89/n4fwAJaAO5ysdH0QAAAABJRU5ErkJggg==');
+}
+.input {
+  -moz-border-image: url('https://owo.whats-th.is/3ifSiSY.png') 4 4 4 4 repeat repeat;
+  -webkit-border-image: url('https://owo.whats-th.is/3ifSiSY.png') 4 4 4 4 repeat repeat;
+  -o-border-image: url('https://owo.whats-th.is/3ifSiSY.png') 4 4 4 4 repeat repeat;
+  border-image: url('https://owo.whats-th.is/3ifSiSY.png') 4 4 4 4 repeat repeat;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=');
+}
