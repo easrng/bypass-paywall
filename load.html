@@ -88,6 +88,10 @@
     <div id="isBroken"><span style="margin-right: 0.5rem;">Is the paywall gone?</span><button onclick="isBroken.style.display='none'" class="button">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'" class="button">No</button></div>
     <iframe srcdoc="Coming Soon" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;border: 0;margin: 0;padding: 0;"></iframe>
     </div>
-    <script>scriptsNeeded.style.display=""</script>
+    <script type="module">
+      import hashUrl from "./hashurl.js";
+      scriptsNeeded.style.display="";
+      window.hashUrl=hashUrl;
+    </script>
   </body>
 </html>
