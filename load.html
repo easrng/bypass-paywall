@@ -103,7 +103,7 @@
         if((await fetch(url, {method:"head"})).status===200){
           pageFrame.removeAttribute("srcdoc")
           pageFrame.addEventListener("load", () => {
-            setTimeout(() => isBroken.style.display="", 1500);
+            isBroken.style.display="";
           })
           document.title="13ft Ladder"
           pageFrame.src=url;
