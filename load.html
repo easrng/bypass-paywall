@@ -83,15 +83,33 @@
         border-bottom: none;
         display: flex;
         align-items: center;
+        z-index: 2;
       }
     </style>
-    <div id="isBroken"><span style="margin-right: 0.5rem;">Is the paywall gone?</span><button onclick="isBroken.style.display='none'" class="button">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'" class="button">No</button></div>
-    <iframe srcdoc="Coming Soon" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;border: 0;margin: 0;padding: 0;"></iframe>
+    <div id="isBroken" style="display:none"><span style="margin-right: 0.5rem;">Is the paywall gone?</span><button onclick="isBroken.style.display='none'" class="button">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'" class="button">No</button></div>
+    <iframe id="pageFrame" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;border: 0;margin: 0;padding: 0;"></iframe>
     </div>
     <script type="module">
       import hashUrl from "./hashurl.js";
       scriptsNeeded.style.display="";
       window.hashUrl=hashUrl;
+      const pageframe=document.querySelector("#pageFrame");
+      const isBroken=document.querySelector("#isBroken");
+      pageframe.srcdoc='<div style="position:fixed;width: 2rem;height:2rem;border-radius:50%;border: 0.25rem solid #ddd;border-top-color: #666;top:calc(50% - 1rem);left:calc(50% - 1rem);transform:rotate(0deg);animation-name:spin;animation-duration:1.5s;animation-iteration-count:infinite;animation-timing-function:linear"></div><style type="text/css">@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>';
+      try {
+        let hash = await hashUrl(new URLSearchParams(location.search).get("url"));
+        let url = "https://13ft-pages.s3.us-west-000.backblazeb2.com/"+hash+".html/"+hash+".html";
+        if((await fetch(url, {method:"head"})).status===200){
+          pageFrame.addEventListener("load", () => {
+            setTimeout(() => isBroken.style.display="", 1500);
+          })
+          pageFrame.src=url;
+        } else {
+          pageframe.srcdoc="Page needs to be saved."
+        }
+      } catch (e) {
+        pageframe.srcdoc='<body style="width:100%;height:100vh;margin:0;padding:0;display:flex;align-items:center;justify-content:center;text-align:center;font-family:system-ui,sans-serif;font-size:1.25rem;color:#b00;background:#fff6f6">There was an error loading the page.</body>'
+      }
     </script>
   </body>
 </html>
