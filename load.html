@@ -101,6 +101,7 @@
         let hash = await hashUrl(new URLSearchParams(location.search).get("url"));
         let url = "https://13ft-pages.s3.us-west-000.backblazeb2.com/"+hash+".html";
         if((await fetch(url, {method:"head"})).status===200){
+          pageFrame.removeAttribute("srcdoc")
           pageFrame.addEventListener("load", () => {
             setTimeout(() => isBroken.style.display="", 1500);
           })
