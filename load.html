@@ -108,8 +108,11 @@
           document.title="13ft Ladder"
           pageFrame.src=url;
         } else {
-          document.title="Page Not Yet Saved - 13ft Ladder"
-          pageFrame.srcdoc="Page needs to be saved."
+          while (1) {
+            const {status} = await(await fetch("https://13ft-api.easrng.workers.dev/?url="+encodeURIComponent(url))).json()
+            if(status == "done") location.reload()
+            await new Promise(cb => setTimeout(cb, 2000))
+          }
         }
       } catch (e) {
         document.title="Error - 13ft Ladder"
