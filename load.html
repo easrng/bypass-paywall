@@ -98,7 +98,8 @@
       document.title="Loading - 13ft Ladder"
       pageFrame.srcdoc='<div style="position:fixed;width: 2rem;height:2rem;border-radius:50%;border: 0.25rem solid #ddd;border-top-color: #666;top:calc(50% - 1rem);left:calc(50% - 1rem);transform:rotate(0deg);animation-name:spin;animation-duration:1.5s;animation-iteration-count:infinite;animation-timing-function:linear"></div><style type="text/css">@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}</style>';
       try {
-        let hash = await hashUrl(new URLSearchParams(location.search).get("url"));
+        let params = new URLSearchParams(location.search);
+        let hash = await hashUrl(params.get("url"));
         let url = "https://13ft-pages.s3.us-west-000.backblazeb2.com/"+hash+".html";
         if((await fetch(url, {method:"head"})).status===200){
           pageFrame.removeAttribute("srcdoc")
@@ -109,7 +110,7 @@
           pageFrame.src=url;
         } else {
           while (1) {
-            const {status} = await(await fetch("https://13ft-api.easrng.workers.dev/?url="+encodeURIComponent(url))).json()
+            const {status} = await(await fetch("https://13ft-api.easrng.workers.dev/?url="+encodeURIComponent(params.get("url")))).json()
             if(status == "done") location.reload()
             await new Promise(cb => setTimeout(cb, 2000))
           }
