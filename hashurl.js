@@ -4,7 +4,7 @@ async function hash(str) {
 export default async function hashUrl(u) {
     let [match, hostname, path] = u.match(/^https:\/?\/?([^\/]+)([^#]*)/)
     hostname = hostname.replace(/\.+/g, ".").replace(/^\.+|\.+$/, "").toLowerCase()
-    const normalizePath = s => s.replace(/\/\.(\/|$)/g, "$1").replace(/\/[^\/]+\/\.\.(\/|$)/g, "$1").replace(/\/+/g, "/")
+    const normalizePath = s => s.replace(/\/\.(\/|$)/g, "$1").replace(/\/[^\/]+\/\.\.(\/|$)/g, "$1").replace(/\/+/g, "/").replace(/\/$/, "")
     while (path != normalizePath(path)) path = normalizePath(path)
     u = hostname + path
     while (u != decodeURIComponent(u)) u = decodeURIComponent(u)
