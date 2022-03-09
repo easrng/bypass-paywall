@@ -244,11 +244,11 @@
     <div class="cover">
       <h1>When you're up against a 12ft paywall, you need a 13ft ladder.</h1>
       <form
-        action="https://13ft.easrng.net/load.html"
+        action="https://13ft-api.easrng.workers.dev/"
         method="GET"
       >
         <input
-          name="url"
+          name="nojs"
           type="url"
           placeholder="https://news.website/article"
           class="input is-normal"
@@ -303,5 +303,9 @@
         </div>
       </footer>
     </div>
+    <script>
+      document.forms[0].action="/load.html"
+      document.forms[0].nojs.name="url"
+    </script>
   </body>
 </html>
