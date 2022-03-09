@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Coming Soon</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>13ft Ladder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
   <body>
     <noscript>This page needs JS</noscript>
-    <div id="scriptsNeeded" style="display:none;">
-    <style>
+    <div id="scriptsNeeded" style="">
+      <style>
       * {
         box-sizing:border-box
       }
@@ -19,63 +19,100 @@
         padding:0;
         width:100%
       }
-      .button {
-        -webkit-appearance:none;
-        align-items:center;
-        border-radius:4px;
-        box-shadow:none;
-        display:inline-flex;
-        font-size:0.9rem;
-        height:2rem;
-        justify-content:flex-start;
-        line-height:1.5;
-        padding:calc(.5em - 1px) calc(.75em - 1px);
-        position:relative;
-        vertical-align:top;
-        -webkit-touch-callout:none;
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
-        background-color:#fef3c7;
-        border:solid 1px #fde68a;
-        color:#363636;
-        cursor:pointer;
-        justify-content:center;
-        padding:calc(.5em - 1px) 0.25;
-        text-align:center;
-        white-space:nowrap;
-        margin-right: 0.35rem;
+      .button,
+      .input {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        align-items: center;
+        border: 1px solid transparent;
+        border-radius: 4px;
+        box-shadow: none;
+        display: inline-flex;
+        font-size: 1rem;
+        height: 2.25em;
+        justify-content: flex-start;
+        line-height: 1.5;
+        padding: calc(0.25em - 1px) calc(0.75em - 1px);
+        position: relative;
+        vertical-align: top;
       }
-      [disabled].button {
-        cursor:not-allowed
+      [disabled].button,
+      [disabled].input {
+        cursor: not-allowed;
+      }
+      .button {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-color: #fef3c7;
+        border-color: #fde68a;
+        border-width: 1px;
+        color: #363636;
+        cursor: pointer;
+        justify-content: center;
+        padding: calc(0.25em - 1px) 0.75em;
+        text-align: center;
+        white-space: nowrap;
+        height: 2.25rem;
+        margin-right: 0.5rem;
       }
       .button:hover {
-        background-color:#fde68a;
-        color:#363636
+        background-color: #fde68a;
+        color: #363636;
       }
       .button:focus {
-        background-color:#fde68a;
-        color:#363636
+        background-color: #fde68a;
+        color: #363636;
       }
       .button:active {
-        box-shadow:0 0 0 .125em #f59e0b40
+        box-shadow: 0 0 0 0.125em #f59e0b40;
+      }
+      .input {
+        background-color: white;
+        border-color: #dbdbdb;
+        border-radius: 4px;
+        color: #363636;
+        box-shadow: inset 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+        max-width: 100%;
+        width: 100%;
+      }
+      .input::-moz-placeholder {
+        color: rgba(54, 54, 54, 0.3);
+      }
+      .input::-webkit-input-placeholder {
+        color: rgba(54, 54, 54, 0.3);
+      }
+      .input:-moz-placeholder {
+        color: rgba(54, 54, 54, 0.3);
+      }
+      .input:-ms-input-placeholder {
+        color: rgba(54, 54, 54, 0.3);
+      }
+      .input:hover {
+        border-color: #b5b5b5;
+      }
+      .input:active,
+      .input:focus {
+        border-color: #485fc7;
+        box-shadow: 0 0 0 0.125em #f59e0b40;
       }
       .button:active,
-      .button:focus {
-        outline:0;
-        border-color:#f59e0b
+      .button:focus,
+      .input:active,
+      .input:focus {
+        outline: 0;
+        border-color: #f59e0b;
       }
       .button:focus:not(:active) {
-        box-shadow:0 0 0 .125em #f59e0b40
+        box-shadow: 0 0 0 0.125em #f59e0b40;
       }
-      
-      #isBroken {
+      nav {
         background: #fff8ea;
         position: fixed;
         bottom: 0;
         left: 1rem;
-        padding: 0.35rem 0 0.35rem 0.35rem;
         border: 1px solid #fde68a;
         border-radius: 4px;
         border-bottom-left-radius: 0;
@@ -85,11 +122,128 @@
         align-items: center;
         z-index: 2;
       }
-    </style>
-    <div id="isBroken" style="display:none"><span style="margin-right: 0.5rem;">Is the paywall gone?</span><button onclick="isBroken.style.display='none'" class="button">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'" class="button">No</button></div>
-    <iframe id="pageFrame" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;border: 0;margin: 0;padding: 0;"></iframe>
+      #share-modal {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+      }
+      #share-modal.is-open {
+        display: flex;
+      }
+      #share-modal.is-open .modal-bg {
+        display: block;
+        background: #0006;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+      [role="dialog"] {
+        background: #fff;
+        border-radius: 4px;
+        padding: 0.5rem;
+        max-width: 22rem;
+        width: 100%;
+        margin: 0.5rem;
+      }
+      #share-modal-title {
+        font-weight: normal;
+        margin: 0;
+      }
+      [role="dialog"] header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        align-items: center;
+      }
+      header>[data-micromodal-close=""] {
+        width: 1.5rem;
+        height: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      header > [data-micromodal-close=""]::before {
+        content: "❌︎";
+      }
+      #share-mastodon-details[open] summary {
+        display: none;
+      }
+      #share-mastodon-details form {
+        display: flex;
+      }
+      #share-mastodon-details button {
+        margin: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        flex-shrink: 0;
+      }
+      #share-mastodon-details .input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        flex-grow: 1;
+      }
+      #share-mastodon-details summary {
+        width: 100%;
+      }
+      #share-modal-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 0.5rem;
+      }
+      #share-modal-content>* {
+        margin: 0;
+      }
+      nav>*{
+        display: flex;
+        align-items: center;
+        padding: 0.35rem 0.5rem;
+        padding-right: 0;
+      }
+      nav>*:not(:last-child){
+        border-right: 1px solid #fde68a;
+        margin-right: 0;
+      }
+      </style>
+      <nav style="display:none"><div id="isBroken"><span style="margin-right: 0.5rem;">Is the paywall gone?</span><button onclick="isBroken.style.display='none'" class="button">Yes</button><button onclick="window.open('https://docs.google.com/forms/d/e/1FAIpQLSddBuiiIVfPJMdf0lIbhIX7j1fW9FRx0iWTypVrEZTsun3Rpw/viewform?entry.1122477594='+encodeURIComponent(new URLSearchParams(location.search).get('url')));isBroken.style.display='none'" class="button">No</button></div><div id="buttons"><button class="button" data-micromodal-trigger="share-modal">Share</button></div></nav>
+      <div aria-hidden="true" id="share-modal">
+        <div tabindex="-1" data-micromodal-close="" class="modal-bg"></div>
+        <div role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+          <header>
+            <h2 id="share-modal-title">Share</h2>
+            <button aria-label="Close modal" data-micromodal-close=""></button>
+          </header>
+          <div id="share-modal-content">
+            <input id="link" class="input" readonly="">
+            <details id="share-mastodon-details">
+              <summary class="button">Mastodon</summary>
+              <form id="share-mastodon">
+                <input class="input" type="url" id="mastodon-instance" placeholder="Instance URL (ex. https://cybre.space)" required>
+                <button class="button">Mastodon</button>
+              </form>
+            </details>
+            <button class="button" id="share-twitter">Twitter</button>
+          </div>
+        </div>
+      </div>
+      <iframe id="pageFrame" style="position: fixed;top: 0;left: 0;width: 100%;height: 100%;border: 0;margin: 0;padding: 0;"></iframe>
     </div>
     <script type="module">
+      import MicroModal from "https://cdn.jsdelivr.net/npm/micromodal@0.4.10/dist/micromodal.es.js";
+      MicroModal.init();
       import hashUrl from "./hashurl.js";
       scriptsNeeded.style.display="";
       window.hashUrl=hashUrl;
@@ -102,9 +256,17 @@
         let hash = await hashUrl(params.get("url"));
         let url = "https://13ft-pages.s3.us-west-000.backblazeb2.com/"+hash+".html";
         if((await fetch(url, {method:"head"})).status===200){
+          const shareLink = document.querySelector("#link");
+          shareLink.value = "https://13ft-api.easrng.workers.dev/?r="+encodeURIComponent(url);
+          (async ()=>{try{const r = await fetch(url.slice(0, -4)+"shorturl.txt");if(!r.ok)throw new Error();shareLink.value=await r.text()}catch(e){}})();
+          document.querySelector("#share-twitter").onclick=()=>window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(shareLink.value));
+          document.querySelector("#share-mastodon").onsubmit=e=>{
+            e.preventDefault()
+            window.open(new URL("/share?text="+encodeURIComponent(shareLink.value),document.querySelector("#mastodon-instance").value).href)
+          }
           pageFrame.removeAttribute("srcdoc")
           pageFrame.addEventListener("load", () => {
-            isBroken.style.display="";
+            document.querySelector("nav").style.display="";
           })
           document.title=await (async ()=>{try{const r = await fetch(url.slice(0, -4)+"title.txt");if(!r.ok)throw new Error();return await r.text()}catch(e){return "13ft Ladder"}})()
           pageFrame.src=url;
