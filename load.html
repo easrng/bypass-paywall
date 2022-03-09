@@ -257,7 +257,7 @@
         let url = "https://13ft-pages.s3.us-west-000.backblazeb2.com/"+hash+".html";
         if((await fetch(url, {method:"head"})).status===200){
           const shareLink = document.querySelector("#link");
-          shareLink.value = "https://13ft-api.easrng.workers.dev/?r="+encodeURIComponent(url);
+          shareLink.value = "https://13ft-api.easrng.workers.dev/?r="+encodeURIComponent(params.get("url"));
           (async ()=>{try{const r = await fetch(url.slice(0, -4)+"shorturl.txt");if(!r.ok)throw new Error();shareLink.value=await r.text()}catch(e){}})();
           document.querySelector("#share-twitter").onclick=()=>window.open("https://twitter.com/intent/tweet?text="+encodeURIComponent(shareLink.value));
           document.querySelector("#share-mastodon").onsubmit=e=>{
