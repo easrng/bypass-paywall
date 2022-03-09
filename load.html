@@ -106,7 +106,7 @@
           pageFrame.addEventListener("load", () => {
             isBroken.style.display="";
           })
-          document.title="13ft Ladder"
+          document.title=await (()=>{try{const r = await fetch(url.slice(0, -4)+"title.txt", {method:"head"});if(!r.ok)throw new Error();return await r.text()}catch(e){return "13ft Ladder"}})()
           pageFrame.src=url;
         } else {
           while (1) {
